@@ -11,3 +11,5 @@ A chave fica cifrada com Windows DPAPI, vinculada ao usuário Windows, em work/s
 A fila respeita os horários de liberação informados pela API e não altera faturamento. A automação não contrata serviços, não publica o PWA e não envia mensagens. O agendamento do Codex não é exportado para o GitHub; os scripts e estas instruções são.
 
 Se a geração avançar, o script importa as novas versões no banco. Quando todos os trechos necessários estiverem disponíveis, monta o áudio, atualiza JSON/VTT, codifica MP3, executa testes e reconstrói a prévia. A chave protegida não faz parte de backups públicos. Para codificação, o ambiente local usa imageio-ffmpeg em work/ffmpeg-runtime; em outra máquina, configure FFMPEG_PATH.
+
+Ao final de cada execução, o Codex deixa uma mensagem neste chat, inclusive quando a cota ainda não liberou. Arquivos públicos alterados e validados são enviados somente para a branch main de anaakamatsu-ops/PROJETO_FUTURE. Credenciais e bancos não são enviados.

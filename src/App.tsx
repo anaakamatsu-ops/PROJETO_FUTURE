@@ -25,7 +25,7 @@ export default function App(){
   const online=()=>setOffline(!navigator.onLine);window.addEventListener('online',online);window.addEventListener('offline',online);
   const prompt=(e:Event)=>{e.preventDefault();setInstall(e as InstallPrompt)};window.addEventListener('beforeinstallprompt',prompt);
   if(import.meta.env.PROD&&'serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>setToast('O modo offline não pôde ser ativado neste navegador.'));
-  if('caches' in window)caches.open('aqui-media-v1').then(async c=>{const found=[];for(const id of ['meditation','grounding'])if(await c.match(MEDIA_BASE+'/'+id+'.json')&&await c.match(MEDIA_BASE+'/'+id+'.mp3')&&await c.match(MEDIA_BASE+'/trilha.mp3'))found.push(id);setDownloaded(found)}).catch(()=>{});
+  if('caches' in window)caches.open('aqui-media-v1').then(async c=>{const found=[];for(const id of ['meditation','grounding']){const meta=await c.match(MEDIA_BASE+'/'+id+'.json');if(meta&&await c.match((await meta.json()).url)&&await c.match(MEDIA_BASE+'/trilha.mp3'))found.push(id)};setDownloaded(found)}).catch(()=>{});
   return()=>{window.removeEventListener('online',online);window.removeEventListener('offline',online);window.removeEventListener('beforeinstallprompt',prompt)};
  },[]);
  useEffect(()=>{if(!user){setHistoryOn(false);setHistory([]);return;}const enabled=read('aqui-history-enabled:'+user.id)==='yes';setHistoryOn(enabled);try{setHistory(enabled?JSON.parse(read('aqui-history:'+user.id)||'[]'):[])}catch{setHistory([])}},[user]);

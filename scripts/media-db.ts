@@ -30,7 +30,7 @@ export function importManifest(){
  mediaDb.exec('COMMIT');}catch(e){mediaDb.exec('ROLLBACK');throw e;}
  return status();
 }
-export function status(){return {assets:Number((mediaDb.prepare('SELECT count(*) n FROM audio_assets').get() as {n:number}).n),complete:Number((mediaDb.prepare("SELECT count(*) n FROM audio_jobs WHERE status='complete'").get() as {n:number}).n),pending:Number((mediaDb.prepare("SELECT count(*) n FROM audio_jobs WHERE status!='complete'").get() as {n:number}).n)}};
+export function status(){return {ready:Number((mediaDb.prepare('SELECT count(*) n FROM current_audio').get() as {n:number}).n),total:cues.length,assets:Number((mediaDb.prepare('SELECT count(*) n FROM audio_assets').get() as {n:number}).n),complete:Number((mediaDb.prepare("SELECT count(*) n FROM audio_jobs WHERE status='complete'").get() as {n:number}).n),pending:Number((mediaDb.prepare("SELECT count(*) n FROM audio_jobs WHERE status!='complete'").get() as {n:number}).n)}};
 export function exportBest(){
  if(cues.some(c=>!mediaDb.prepare('SELECT 1 FROM current_audio WHERE cue_id=? AND text_hash=?').get(c.id,digest(c.text))))return false;
  const manifest:{voice:string;provider:string;models:string[];cues:Record<string,unknown>}={voice:'Sulafat',provider:'Gemini TTS',models:[],cues:{}};

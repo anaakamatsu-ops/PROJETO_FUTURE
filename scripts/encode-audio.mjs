@@ -1,4 +1,5 @@
-import {readdir,readFile,writeFile} from 'node:fs/promises';
+import {readdir,readFile,writeFile,rename} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 import fs from 'node:fs';
 import {resolve} from 'node:path';
 import {execFileSync} from 'node:child_process';
@@ -9,6 +10,6 @@ for(const id of ['welcome','meditation','grounding','trilha']){
  const wav=directory+'/'+id+'.wav',mp3=directory+'/'+id+'.mp3';
  if(!fs.existsSync(wav))continue;
  execFileSync(ffmpeg,['-hide_banner','-loglevel','error','-y','-i',wav,'-c:a','libmp3lame','-b:a','32k','-ar','22050','-ac','1','-map_metadata','-1','-id3v2_version','3',mp3],{windowsHide:true});
- if(id!=='trilha'){const data=JSON.parse(await readFile(directory+'/'+id+'.json','utf8'));data.url='/media/gemini-v1/'+id+'.mp3';await writeFile(directory+'/'+id+'.json',JSON.stringify(data,null,2));}
+ if(id!=='trilha'){const hash=createHash('sha256').update(await readFile(mp3)).digest('hex').slice(0,12);const versioned=directory+'/'+id+'-'+hash+'.mp3';await rename(mp3,versioned);const data=JSON.parse(await readFile(directory+'/'+id+'.json','utf8'));data.url='/media/gemini-v1/'+id+'-'+hash+'.mp3';await writeFile(directory+'/'+id+'.json',JSON.stringify(data,null,2));}
  console.log('Áudio otimizado: '+id);
 }

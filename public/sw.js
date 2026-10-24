@@ -8,6 +8,8 @@ self.addEventListener('fetch',event=>{
  const req=event.request,url=new URL(req.url);
  if(req.method!=='GET'||url.origin!==self.location.origin||url.pathname.startsWith('/api/'))return;
  if(url.pathname.startsWith('/media/')){
+  if(url.pathname.endsWith('.json')){event.respondWith(fetch(req).catch(async()=>{const c=await caches.open(MEDIA);return await c.match(url.pathname)||Response.error()}));return;}
+
   event.respondWith((async()=>{const cache=await caches.open(MEDIA);const hit=await cache.match(url.pathname);if(!hit)return fetch(req);
    const range=req.headers.get('range');if(!range)return hit;
    const buf=await hit.arrayBuffer(),m=/^bytes=(\d+)-(\d*)$/.exec(range);

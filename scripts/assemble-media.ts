@@ -11,12 +11,14 @@ mkdirSync(mediaDir,{recursive:true});mkdirSync('docs',{recursive:true});
 function wave(pcm:Buffer){const h=Buffer.alloc(44);h.write('RIFF');h.writeUInt32LE(36+pcm.length,4);h.write('WAVEfmt ',8);h.writeUInt32LE(16,16);h.writeUInt16LE(1,20);h.writeUInt16LE(1,22);h.writeUInt32LE(RATE,24);h.writeUInt32LE(RATE*2,28);h.writeUInt16LE(2,32);h.writeUInt16LE(16,34);h.write('data',36);h.writeUInt32LE(pcm.length,40);return Buffer.concat([h,pcm]);}
 function pcm(path:string){const b=readFileSync(path);let rate=0,channels=0,bits=0,format=0;for(let p=12;p<b.length;){const id=b.toString('ascii',p,p+4),len=b.readUInt32LE(p+4);if(id==='fmt '){format=b.readUInt16LE(p+8);channels=b.readUInt16LE(p+10);rate=b.readUInt32LE(p+12);bits=b.readUInt16LE(p+22);}if(id==='data'){if(format!==1||bits!==16||channels!==1)throw Error('WAV precisa ser PCM16 mono: '+path);const input=b.subarray(p+8,p+8+len);if(rate===RATE)return Buffer.from(input);const count=Math.floor(input.length/2*RATE/rate),out=Buffer.alloc(count*2);for(let i=0;i<count;i++){const pos=i*rate/RATE,left=Math.min(Math.floor(pos),input.length/2-1),right=Math.min(left+1,input.length/2-1),fraction=pos-left;out.writeInt16LE(Math.round(input.readInt16LE(left*2)*(1-fraction)+input.readInt16LE(right*2)*fraction),i*2)}return out;}p+=8+len+(len%2)}throw Error('WAV sem dados: '+path);}
 const stamp=(s:number)=>{const ms=Math.round(s*1000);return String(Math.floor(ms/3600000)).padStart(2,'0')+':'+String(Math.floor(ms/60000)%60).padStart(2,'0')+':'+String(Math.floor(ms/1000)%60).padStart(2,'0')+'.'+String(ms%1000).padStart(3,'0')};
-let timeline='# Roteiro e linha do tempo real\n\n'+narrator+'. Tempos medidos nos WAVs, não estimativas. A pausa interrompe voz, música e relógio. A reprodução conduz toda a contagem automaticamente até dez e encerra convidando a abrir os olhos lentamente.\n\n';
+let timeline='# Roteiro e linha do tempo real\n\nÁudios Gemini disponíveis integrados; trechos ainda ausentes usam voz provisória, conforme os metadados de cada prática. '+narrator+'. Tempos medidos nos WAVs, não estimativas. A pausa interrompe voz, música e relógio. A reprodução conduz toda a contagem automaticamente até dez e encerra convidando a abrir os olhos lentamente.\n\n';
 for(const [id,source] of Object.entries({welcome,meditation,grounding})){
  const complete=gemini&&source.every(c=>manifest.cues[c.id]);
  if(gemini&&!complete&&!process.argv.includes('--partial'))throw Error('Geração Gemini incompleta: '+id);
- const clips=source.map(c=>pcm(complete?manifest.cues[c.id].path:'work/audio-snippets/'+c.id+'.wav'));
- const groupNarrator=complete?narrator:'Microsoft Maria Desktop — voz provisória sintética pt-BR';
+ const anyGemini=gemini&&source.some(c=>manifest.cues[c.id]);
+ const clips=source.map(c=>pcm(gemini&&manifest.cues[c.id]?manifest.cues[c.id].path:'work/audio-snippets/'+c.id+'.wav'));
+ const groupProvider=complete?'gemini':anyGemini?'mixed':'windows';
+ const groupNarrator=complete?narrator:anyGemini?'Gemini TTS / Sulafat; trecho final provisório Microsoft Maria':'Microsoft Maria Desktop — voz provisória sintética pt-BR';
  const spoken=clips.reduce((sum,b)=>sum+b.length/(RATE*2),0);const pauses=source.reduce((sum,c)=>sum+c.pause,0);
  // Ajuste dos silêncios de preparação para manter a meditação próxima de 10 minutos.
  const extra=id==='meditation'?Math.max(0,660-spoken-pauses):0;
@@ -34,7 +36,7 @@ for(const [id,source] of Object.entries({welcome,meditation,grounding})){
   timeline+='### '+stamp(start)+' → '+stamp(t)+' — '+c.stage+(c.count?' ('+c.count+'/10)':'')+'\n\n'+c.text+'\n\nPausa: '+gap.toFixed(1)+' s. Visual: '+(c.count?'círculo com '+c.count:'jardim vetorial / círculo de presença')+'. Trilha: volume inicial 16%, ajustável e desligável.\n\n';
  }
  writeFileSync(mediaDir+'/'+id+'.wav',wave(Buffer.concat(buffers)));
- writeFileSync(mediaDir+'/'+id+'.json',JSON.stringify({duration:t,cues,url:mediaUrl+'/'+id+'.wav',voice:groupNarrator,provider:complete?'gemini':'windows',models:complete?manifest.models:[]},null,2));
+ writeFileSync(mediaDir+'/'+id+'.json',JSON.stringify({duration:t,cues,url:mediaUrl+'/'+id+'.wav',voice:groupNarrator,provider:groupProvider,models:complete?manifest.models:[]},null,2));
  writeFileSync(mediaDir+'/'+id+'.vtt',vtt);console.log(id,t.toFixed(2)+'s',Math.round(Buffer.concat(buffers).length/1024/1024)+'MB');
 }
 // Composição original: pad senoidal de 32 s, afinação de referência Lá=432 Hz.

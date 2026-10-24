@@ -110,11 +110,11 @@ Motion respeita a preferência de redução de movimento. O SVG original tem ár
 
 ## 11. Mídias, reprodução e offline
 
-As boas-vindas já usam **Gemini TTS, voz Sulafat**. Os trechos Gemini restantes são produzidos e guardados em SQLite; enquanto a montagem de uma prática não estiver completa, a prévia conserva a voz sintética provisória, identificada na interface. Não dependem de síntese em tempo real. Há WAV, legendas VTT e JSON com tempos medidos. O relógio da voz controla as legendas e o estado visual; a pausa interrompe os áudios. A reprodução pausa quando a aba fica oculta, evitando um descompasso involuntário. Existe roteiro completo para leitura, inclusive sem áudio.
+As boas-vindas já usam **Gemini TTS, voz Sulafat**. Os trechos Gemini restantes são produzidos e guardados em SQLite; a meditação já utiliza os trechos Gemini disponíveis e mantém somente o encerramento ainda pendente em voz provisória, identificado na interface. A prática de atenção ao ambiente permanece provisória. Não dependem de síntese em tempo real. Há WAV, legendas VTT e JSON com tempos medidos. O relógio da voz controla as legendas e o estado visual; a pausa interrompe os áudios. A reprodução pausa quando a aba fica oculta, evitando um descompasso involuntário. Existe roteiro completo para leitura, inclusive sem áudio.
 
 A trilha instrumental é uma composição digital original de osciladores senoidais, referência Lá=432 Hz, sem amostras de terceiros. Loop de 32 segundos, com junção em zero e volume inicial inferior ao da voz. Pode ser desligada e ajustada separadamente. A afinação é uma escolha sonora.
 
-No menu Práticas, selecione **Salvar áudio e roteiro offline**. O download é confirmado somente quando narração, JSON e trilha estão completos. A meditação WAV tem aproximadamente 28 MB. O Service Worker atende pedidos Range, necessários para avançar e retomar áudio offline. O shell é instalado separadamente. O cache não contém dados de contas.
+No menu Práticas, selecione **Salvar áudio e roteiro offline**. O download é confirmado somente quando narração, JSON e trilha estão completos. A meditação MP3 otimizada tem aproximadamente 2,6 MB; o master WAV local tem aproximadamente 28 MB. O Service Worker atende pedidos Range, necessários para avançar e retomar áudio offline. O shell é instalado separadamente. O cache não contém dados de contas.
 
 Offline, qualquer pessoa pode acessar conteúdos públicos baixados, sem validar uma sessão ou consultar dados da conta. Cadastro, exportação e exclusão exigem conexão. Áudios baixados podem ser removidos em Seu cuidado. O modo offline deve ser testado no build (`preview`), e não no servidor de desenvolvimento Vite.
 

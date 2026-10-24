@@ -5,7 +5,7 @@
 | Paisagem `public/images/jardim.webp` | Gerada especificamente para o app, com a ferramenta integrada image_gen; otimizada em WebP |
 | Marca, ícones e jardim com pessoa sentada | SVG original escrito no projeto |
 | Folha de encerramento | Lottie original descrito no código, com versão estática |
-| Boas-vindas, meditação e atenção ao ambiente | Voz **sintética** Microsoft Maria Desktop, gravada no Windows; WAVs reais, VTTs e tempos JSON |
+| Boas-vindas, meditação e atenção ao ambiente | 35 trechos Gemini TTS / Sulafat produzidos. Boas-vindas inteiramente em Gemini; meditação com encerramento provisório; atenção ao ambiente provisória. Masters WAV locais e MP3 de distribuição, VTTs e JSON temporal. |
 | Trilha | Composição digital original, sem samples, referência Lá=432 Hz, loop de 32 s |
 | Narração humana profissional | **Pendente** |
 | Vídeo real de pessoa meditando | **Não produzido**; substituído por animação vetorial, conforme alternativa autorizada no pedido |
