@@ -1,0 +1,37 @@
+import { useEffect, useRef, useState } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
+import { Garden, Icon } from './ui';
+import { meditation, grounding } from './content';
+import { mediaData, MEDIA_BASE } from './api';
+import type { MediaData } from './api';
+export function Player({id,onFinish,onExit}:{id:string;onFinish:()=>void;onExit:()=>void}){
+ const audio=useRef<HTMLAudioElement>(null),music=useRef<HTMLAudioElement>(null);
+ const [data,setData]=useState<MediaData>(),[error,setError]=useState(''),[playing,setPlaying]=useState(false),[time,setTime]=useState(0),[volume,setVolume]=useState(.85),[musicOn,setMusicOn]=useState(true),[musicVolume,setMusicVolume]=useState(.16),[captions,setCaptions]=useState(true),[view,setView]=useState('garden'),[confirm,setConfirm]=useState(false);
+ const dialog=useRef<HTMLElement>(null);
+ const reduce=useReducedMotion();
+ useEffect(()=>{let active=true;mediaData(id).then(d=>{if(active)setData(d)}).catch(e=>{if(active)setError(e.message)});return()=>{active=false}},[id]);
+ useEffect(()=>{if(audio.current)audio.current.volume=volume},[volume,data]);
+ useEffect(()=>{const m=music.current;if(m){m.volume=musicVolume;if(playing&&musicOn)m.play().catch(()=>setError('A música não iniciou. A narração pode continuar.'));else m.pause()}},[musicOn,musicVolume,playing]);
+ useEffect(()=>{const a=audio.current,m=music.current;return()=>{a?.pause();m?.pause()}},[]);
+ useEffect(()=>{if(!confirm)return;dialog.current?.focus();const key=(e:KeyboardEvent)=>{if(e.key==='Escape')setConfirm(false);if(e.key==='Tab'){const items=dialog.current?.querySelectorAll<HTMLButtonElement>('button');if(!items)return;const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}};document.addEventListener('keydown',key);return()=>document.removeEventListener('keydown',key)},[confirm]);
+ useEffect(()=>{function hide(){if(document.hidden){audio.current?.pause();music.current?.pause();setPlaying(false);}}document.addEventListener('visibilitychange',hide);return()=>document.removeEventListener('visibilitychange',hide)},[]);
+ const cue=data?.cues.find(c=>time>=(c.start||0)&&time<(c.end||0));
+ const title=id==='grounding'?'Sentir o aqui e agora':'Respirar e estar presente';
+ const fmt=(s:number)=>Math.floor(s/60).toString().padStart(2,'0')+':'+Math.floor(s%60).toString().padStart(2,'0');
+ async function toggle(){if(!audio.current)return;if(playing){audio.current.pause();setPlaying(false)}else{try{await audio.current.play();if(musicOn&&music.current){music.current.volume=musicVolume;await music.current.play().catch(()=>{})}setPlaying(true);setError('')}catch{setError('Não foi possível tocar o áudio. Verifique a conexão ou baixe a prática novamente.')}}}
+ function leave(){audio.current?.pause();setPlaying(false);setConfirm(true)}
+ return <main className="player-page"><div className="player-top"><button className="text-button" onClick={leave}><Icon name="back"/> Sair da prática</button><span className="eyebrow">SEU MOMENTO DE PRESENÇA</span><Icon name="leaf"/></div>
+ <div className="player-heading"><span className="tag">{id==='grounding'?'ATENÇÃO AO AMBIENTE':'MEDITAÇÃO GUIADA'}</span><h1>{title}</h1><p>Você pode manter os olhos abertos. Não há nada para fazer perfeitamente.</p></div>
+ <div className={'practice-scene '+(!playing?'paused ':'')+(view==='circle'?'abstract-scene':'')}>{view==='garden'?<Garden/>:<div className="orb-scene"><motion.div className="breathing-orb" animate={reduce||!playing?{scale:1}:{scale:[.97,1.04,.97]}} transition={{duration:14,repeat:Infinity,ease:'easeInOut'}}><span>{cue?.count||<Icon name="leaf" size={45}/>}</span></motion.div><p>Deixe a respiração acontecer naturalmente.<br/>A animação não define seu ritmo.</p></div>}
+ <span className="scene-label">{view==='garden'?'Cena vetorial original · alternativa ao vídeo':'Círculo de presença'}</span>
+ {captions&&<div className="captions" aria-label="Legenda da narração"><span>{cue?.stage||'Uma pausa para você'}</span><p>{cue&&time<(cue.voiceEnd||0)?cue.text:playing?'Permaneça por alguns instantes, no seu tempo.':'Quando estiver confortável, toque em iniciar.'}</p></div>}</div>
+ <div className="player-controls"><div className="progress-label"><span>{fmt(time)}</span><span>{cue?.count?`${cue.count} de 10`:(cue?.stage||'Preparação')}</span><span>{fmt(data?.duration||0)}</span></div><input className="timeline" aria-label="Posição na prática" type="range" min="0" max={data?.duration||1} step=".1" value={time} onChange={e=>{const t=Number(e.target.value);if(audio.current)audio.current.currentTime=t;setTime(t)}}/>
+ <div className="transport"><button className="icon-button" aria-label="Voltar 15 segundos" onClick={()=>{if(audio.current){audio.current.currentTime=Math.max(0,audio.current.currentTime-15);setTime(audio.current.currentTime)}}}><Icon name="repeat"/></button><button className="play-button" disabled={!data} onClick={toggle} aria-label={playing?'Pausar prática':'Iniciar prática'}><Icon name={playing?'pause':'play'} size={27}/></button><button className="text-button" onClick={leave}>Encerrar</button></div>
+ <div className="player-settings"><label><Icon name="sound"/> Voz <input aria-label="Volume da voz" type="range" min="0" max="1" step=".05" value={volume} onChange={e=>setVolume(Number(e.target.value))}/></label><button className={'pill '+(musicOn?'selected':'')} aria-pressed={musicOn} onClick={()=>setMusicOn(!musicOn)}>Música {musicOn?'ligada':'desligada'}</button><label className="music-volume">Trilha <input aria-label="Volume da música" type="range" min="0" max=".5" step=".02" value={musicVolume} onChange={e=>setMusicVolume(Number(e.target.value))}/></label><button className={'pill '+(captions?'selected':'')} aria-pressed={captions} onClick={()=>setCaptions(!captions)}>Legendas</button><button className="pill" onClick={()=>setView(view==='garden'?'circle':'garden')}>{view==='garden'?'Ver círculo':'Ver jardim'}</button></div>
+ <p className="media-note">{data?.provider==='gemini'?'Narração por IA · Gemini TTS · pt-BR':'Voz sintética provisória · pt-BR'} · trilha original, Lá = 432 Hz.<br/>Voz sintética pré-gravada. A afinação é uma escolha estética.</p>
+ {error&&<p role="alert" className="error">{error}</p>}
+ <details className="transcript"><summary>Ler o roteiro completo</summary>{(data?.cues||(id==='grounding'?grounding:meditation)).map(c=><p key={c.id}>{c.text} <small>[Pausa de {c.pause} s]</small></p>)}</details></div>
+ <audio ref={audio} src={data?.url} preload="metadata" onTimeUpdate={()=>setTime(audio.current?.currentTime||0)} onPause={()=>setPlaying(false)} onEnded={()=>{setPlaying(false);music.current?.pause();onFinish()}} onError={()=>{if(data)setError('O áudio não carregou. Verifique sua conexão ou o download offline.')}}/>
+ <audio ref={music} src={MEDIA_BASE+'/trilha.mp3'} loop preload="none"/>
+ {confirm&&<div className="modal-backdrop"><section ref={dialog} tabIndex={-1} className="modal" role="dialog" aria-modal="true" aria-labelledby="leave-title"><h2 id="leave-title">Seu tempo é seu.</h2><p>Você pode encerrar agora ou continuar a prática. Se desejar, abra os olhos lentamente e observe o ambiente antes de seguir.</p><button autoFocus className="button" onClick={onExit}>Encerrar e voltar</button><button className="text-button" onClick={()=>setConfirm(false)}>Continuar de onde parei</button></section></div>}</main>
+}

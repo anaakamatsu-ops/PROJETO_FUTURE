@@ -1,0 +1,251 @@
+{
+  "duration": 660.0000453514739,
+  "cues": [
+    {
+      "id": "m01",
+      "text": "Encontre uma posição confortável. Você pode se sentar com os pés apoiados no chão, sobre uma almofada ou em outro lugar onde se sinta bem.",
+      "pause": 5.175,
+      "stage": "Acomodar o corpo",
+      "start": 0,
+      "voiceEnd": 15.338820861678004,
+      "end": 20.51360544217687
+    },
+    {
+      "id": "m02",
+      "text": "Se desejar, feche suavemente os olhos. Se preferir, mantenha-os abertos, repousando o olhar em um ponto tranquilo.",
+      "pause": 5.175,
+      "stage": "Acomodar o corpo",
+      "start": 20.51360544217687,
+      "voiceEnd": 34.526757369614515,
+      "end": 39.70154195011338
+    },
+    {
+      "id": "m03",
+      "text": "Se estiver confortável, vamos começar. Você pode pausar ou interromper a qualquer momento. Se sentir desconforto, abra os olhos, observe o ambiente e volte à sua respiração habitual.",
+      "pause": 4.436,
+      "stage": "Acomodar o corpo",
+      "start": 39.70154195011338,
+      "voiceEnd": 61.69619047619048,
+      "end": 66.13170068027212
+    },
+    {
+      "id": "m04",
+      "text": "Imagine que você está em um lugar calmo, seguro e agradável. Pode ser um jardim, uma praia tranquila, perto de uma árvore ou qualquer lugar onde você se sinta em paz.",
+      "pause": 5.914,
+      "stage": "Acomodar o corpo",
+      "start": 66.13170068027212,
+      "voiceEnd": 84.63723356009072,
+      "end": 90.5512471655329
+    },
+    {
+      "id": "m05",
+      "text": "Perceba seu corpo. Sinta o contato do lugar onde está sentado. Observe a textura, a temperatura e o apoio que sustenta o seu peso.",
+      "pause": 5.914,
+      "stage": "Perceber os apoios",
+      "start": 90.5512471655329,
+      "voiceEnd": 106.99147392290251,
+      "end": 112.9054875283447
+    },
+    {
+      "id": "m06",
+      "text": "Permita que seu corpo descanse. Relaxe suavemente os ombros. Solte seus braços. Deixe suas mãos repousarem confortavelmente.",
+      "pause": 5.914,
+      "stage": "Perceber os apoios",
+      "start": 112.9054875283447,
+      "voiceEnd": 130.25011337868483,
+      "end": 136.164126984127
+    },
+    {
+      "id": "m07",
+      "text": "Perceba seu rosto, sua mandíbula e sua testa. Não é necessário fazer esforço. Durante estes próximos minutos, você não precisa resolver nada. Apenas esteja presente.",
+      "pause": 10,
+      "stage": "Apenas estar",
+      "start": 136.164126984127,
+      "voiceEnd": 158.28086167800456,
+      "end": 168.28086167800456
+    },
+    {
+      "id": "m08",
+      "text": "Agora, leve sua atenção até sua respiração. Perceba o ar entrando suavemente pelas suas narinas. Acompanhe mentalmente a passagem do ar.",
+      "pause": 5.914,
+      "stage": "Encontrar a respiração",
+      "start": 168.28086167800456,
+      "voiceEnd": 185.17990929705218,
+      "end": 191.09392290249434
+    },
+    {
+      "id": "m09",
+      "text": "Imagine seus pulmões se expandindo naturalmente. O oxigênio que chega aos pulmões participa dos processos que sustentam o funcionamento do nosso corpo. Imagine, de maneira suave, essa sensação de renovação.",
+      "pause": 5.914,
+      "stage": "Encontrar a respiração",
+      "start": 191.09392290249434,
+      "voiceEnd": 214.6391836734694,
+      "end": 220.55319727891157
+    },
+    {
+      "id": "m10",
+      "text": "Agora, permita que o ar saia naturalmente, pela boca se isso for confortável. Observe a saída do ar. Sem pressa. Não é preciso respirar mais fundo nem prender o ar.",
+      "pause": 7.393,
+      "stage": "Encontrar a respiração",
+      "start": 220.55319727891157,
+      "voiceEnd": 241.7130612244898,
+      "end": 249.10557823129253
+    },
+    {
+      "id": "m11",
+      "text": "Vou guiar uma contagem de um a dez. Cada número acompanha uma respiração completa, no seu ritmo. Os números são convites, não um metrônomo. Se precisar de mais tempo, pause a gravação e retome quando desejar.",
+      "pause": 3.696,
+      "stage": "Contar com gentileza",
+      "start": 249.10557823129253,
+      "voiceEnd": 273.89850340136053,
+      "end": 277.59478458049887
+    },
+    {
+      "id": "m12",
+      "text": "Inspire suavemente. Perceba o ar entrando. Observe seu corpo recebendo essa respiração. Agora solte o ar de maneira confortável. Ao terminar de expirar, conte mentalmente: um.",
+      "pause": 8.871,
+      "stage": "Primeira respiração",
+      "count": 1,
+      "start": 277.59478458049887,
+      "voiceEnd": 301.3766893424036,
+      "end": 310.2477551020408
+    },
+    {
+      "id": "m13",
+      "text": "Novamente, inspire com suavidade. Perceba a passagem do ar pelas narinas. Imagine seus pulmões se expandindo. Deixe que o ar saia. Quando terminar de expirar, conte mentalmente: dois.",
+      "pause": 8.871,
+      "stage": "Segunda respiração",
+      "count": 2,
+      "start": 310.2477551020408,
+      "voiceEnd": 334.4928798185941,
+      "end": 343.36394557823127
+    },
+    {
+      "id": "m14",
+      "text": "Continue acompanhando sua respiração. Observe a inspiração. Sinta a expansão natural do corpo. Solte o ar. Conte mentalmente: três.",
+      "pause": 8.871,
+      "stage": "Terceira respiração",
+      "count": 3,
+      "start": 343.36394557823127,
+      "voiceEnd": 361.1181405895691,
+      "end": 369.9892063492063
+    },
+    {
+      "id": "m15",
+      "text": "Talvez sua mente comece a pensar em outras coisas. Você poderá lembrar de ontem ou pensar no que precisa fazer amanhã. Isso é natural. A mente produz pensamentos.",
+      "pause": 5.914,
+      "stage": "Perceber e retornar",
+      "start": 369.9892063492063,
+      "voiceEnd": 389.90897959183667,
+      "end": 395.82299319727883
+    },
+    {
+      "id": "m16",
+      "text": "Quando perceber que sua atenção se afastou, não se critique. Reconheça o pensamento e retorne gentilmente ao ar entrando e saindo. Não é necessário expulsar os pensamentos. Cada retorno é uma oportunidade de praticar.",
+      "pause": 5.914,
+      "stage": "Perceber e retornar",
+      "start": 395.82299319727883,
+      "voiceEnd": 420.99963718820857,
+      "end": 426.91365079365073
+    },
+    {
+      "id": "m17",
+      "text": "Voltamos à contagem. Perceba o ar entrar. Deixe-o sair com naturalidade. Ao terminar, conte: quatro.",
+      "pause": 10.35,
+      "stage": "Quarta respiração",
+      "count": 4,
+      "start": 426.91365079365073,
+      "voiceEnd": 442.1438548752834,
+      "end": 452.49342403628117
+    },
+    {
+      "id": "m18",
+      "text": "Acompanhe mais uma respiração confortável. O ar entra. O ar sai. Cinco.",
+      "pause": 10.35,
+      "stage": "Quinta respiração",
+      "count": 5,
+      "start": 452.49342403628117,
+      "voiceEnd": 464.3173696145125,
+      "end": 474.66693877551023
+    },
+    {
+      "id": "m19",
+      "text": "Sem esforço, observe uma nova inspiração e uma nova expiração. Seis.",
+      "pause": 10.35,
+      "stage": "Sexta respiração",
+      "count": 6,
+      "start": 474.66693877551023,
+      "voiceEnd": 484.4946031746032,
+      "end": 494.84417233560094
+    },
+    {
+      "id": "m20",
+      "text": "Respire naturalmente. Ao terminar de soltar o ar, sete.",
+      "pause": 10.35,
+      "stage": "Sétima respiração",
+      "count": 7,
+      "start": 494.84417233560094,
+      "voiceEnd": 502.96648526077104,
+      "end": 513.3160544217687
+    },
+    {
+      "id": "m21",
+      "text": "Mais uma respiração, como ela vier. Oito.",
+      "pause": 10.35,
+      "stage": "Oitava respiração",
+      "count": 8,
+      "start": 513.3160544217687,
+      "voiceEnd": 520.2774603174604,
+      "end": 530.6270294784581
+    },
+    {
+      "id": "m22",
+      "text": "Observe o ar entrando e saindo. Nove.",
+      "pause": 10.35,
+      "stage": "Nona respiração",
+      "count": 9,
+      "start": 530.6270294784581,
+      "voiceEnd": 536.8427210884354,
+      "end": 547.1922902494331
+    },
+    {
+      "id": "m23",
+      "text": "Acompanhe esta respiração inteira, sem pressa. Ao terminar de expirar, dez.",
+      "pause": 10.35,
+      "stage": "Décima respiração",
+      "count": 10,
+      "start": 547.1922902494331,
+      "voiceEnd": 557.5053061224489,
+      "end": 567.8548752834466
+    },
+    {
+      "id": "m24",
+      "text": "Agora, deixe a contagem terminar. Volte a perceber seu corpo. Sinta o apoio do lugar onde está sentado. Observe os sons que chegam até você. Perceba sua respiração natural.",
+      "pause": 5.914,
+      "stage": "Voltar ao ambiente",
+      "start": 567.8548752834466,
+      "voiceEnd": 590.7777324263038,
+      "end": 596.691746031746
+    },
+    {
+      "id": "m25",
+      "text": "Se seus olhos estiverem fechados, abra-os lentamente, quando se sentir confortável. Antes de continuar seu dia, reserve mais um instante. Observe como você se sente, sem precisar encontrar uma resposta específica.",
+      "pause": 5.914,
+      "stage": "Abrir os olhos lentamente",
+      "start": 596.691746031746,
+      "voiceEnd": 622.1122448979592,
+      "end": 628.0262585034013
+    },
+    {
+      "id": "m26",
+      "text": "Você acabou de dedicar alguns minutos ao cuidado consigo mesmo. Estar presente é uma habilidade que pode ser exercitada. Você pode voltar a esta prática sempre que desejar. Obrigada por compartilhar este momento. Até a próxima meditação.",
+      "pause": 3.696,
+      "stage": "Levar a presença com você",
+      "start": 628.0262585034013,
+      "voiceEnd": 656.3037641723356,
+      "end": 660.0000453514739
+    }
+  ],
+  "url": "/media/meditation.wav",
+  "voice": "Microsoft Maria Desktop — voz sintética pt-BR gravada"
+}

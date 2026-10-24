@@ -1,0 +1,52 @@
+{
+  "duration": 153.57120181405895,
+  "cues": [
+    {
+      "id": "g01",
+      "text": "Mantenha os olhos abertos, se preferir. Encontre uma posição confortável. Não é preciso focar na respiração. Você pode interromper quando desejar.",
+      "pause": 8,
+      "stage": "Chegar ao ambiente",
+      "start": 0,
+      "voiceEnd": 18.992743764172335,
+      "end": 26.992743764172335
+    },
+    {
+      "id": "g02",
+      "text": "Olhe ao redor. Encontre uma cor que chame sua atenção. Observe uma forma. Perceba a luz no ambiente.",
+      "pause": 20,
+      "stage": "Observar",
+      "start": 26.992743764172335,
+      "voiceEnd": 41.16362811791383,
+      "end": 61.16362811791383
+    },
+    {
+      "id": "g03",
+      "text": "Perceba os pontos de apoio do seu corpo. O contato dos pés com o chão. Das mãos com uma superfície. Sem precisar mudar nada.",
+      "pause": 20,
+      "stage": "Sentir os apoios",
+      "start": 61.16362811791383,
+      "voiceEnd": 77.68095238095238,
+      "end": 97.68095238095238
+    },
+    {
+      "id": "g04",
+      "text": "Observe os sons próximos e distantes. Não é necessário nomear todos eles. Apenas perceba o que chega até você.",
+      "pause": 20,
+      "stage": "Escutar",
+      "start": 97.68095238095238,
+      "voiceEnd": 111.99873015873015,
+      "end": 131.99873015873015
+    },
+    {
+      "id": "g05",
+      "text": "Volte a olhar ao redor. Movimente as mãos suavemente. Se desejar, continue seu dia no seu tempo. Obrigada por estar aqui.",
+      "pause": 5,
+      "stage": "Retornar",
+      "start": 131.99873015873015,
+      "voiceEnd": 148.57120181405895,
+      "end": 153.57120181405895
+    }
+  ],
+  "url": "/media/grounding.wav",
+  "voice": "Microsoft Maria Desktop — voz sintética pt-BR gravada"
+}

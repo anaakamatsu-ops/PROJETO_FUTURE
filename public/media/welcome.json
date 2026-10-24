@@ -1,0 +1,97 @@
+{
+  "duration": 160.14213151927436,
+  "cues": [
+    {
+      "id": "w01",
+      "text": "Seja muito bem-vindo. Este é um espaço criado especialmente para você.",
+      "pause": 3,
+      "stage": "Chegar",
+      "start": 0,
+      "voiceEnd": 9.365850340136054,
+      "end": 12.365850340136054
+    },
+    {
+      "id": "w02",
+      "text": "Aqui, você terá acesso a técnicas de meditação, respiração consciente e relaxamento, que podem contribuir para o seu bem-estar físico e emocional.",
+      "pause": 3,
+      "stage": "Uma pausa",
+      "start": 12.365850340136054,
+      "voiceEnd": 28.43333333333333,
+      "end": 31.43333333333333
+    },
+    {
+      "id": "w03",
+      "text": "Você já percebeu como nossa mente costuma viajar entre lembranças do passado e preocupações com o futuro?",
+      "pause": 3,
+      "stage": "Perceber",
+      "start": 31.43333333333333,
+      "voiceEnd": 42.40997732426304,
+      "end": 45.40997732426304
+    },
+    {
+      "id": "w04",
+      "text": "Em alguns momentos, esses pensamentos podem intensificar a ansiedade e nos afastar da experiência do presente.",
+      "pause": 3,
+      "stage": "Perceber",
+      "start": 45.40997732426304,
+      "voiceEnd": 57.25700680272109,
+      "end": 60.25700680272109
+    },
+    {
+      "id": "w05",
+      "text": "A meditação é uma forma de exercitar a atenção ao que está acontecendo agora.",
+      "pause": 3,
+      "stage": "Estar presente",
+      "start": 60.25700680272109,
+      "voiceEnd": 68.47297052154195,
+      "end": 71.47297052154195
+    },
+    {
+      "id": "w06",
+      "text": "Ao observar sua respiração, seu corpo e seus pensamentos, você aprende a retornar gentilmente ao aqui e agora.",
+      "pause": 3,
+      "stage": "Retornar",
+      "start": 71.47297052154195,
+      "voiceEnd": 83.86952380952381,
+      "end": 86.86952380952381
+    },
+    {
+      "id": "w07",
+      "text": "Com a prática, esse exercício pode ajudar a desenvolver a atenção, a concentração e uma relação mais consciente com os próprios pensamentos.",
+      "pause": 3,
+      "stage": "Experimentar",
+      "start": 86.86952380952381,
+      "voiceEnd": 101.88748299319728,
+      "end": 104.88748299319728
+    },
+    {
+      "id": "w08",
+      "text": "Pesquisas apontam benefícios potenciais de alguns programas de meditação para a ansiedade. Para estresse, a evidência é mais limitada. Os resultados variam e este aplicativo ainda não foi avaliado em estudos.",
+      "pause": 3,
+      "stage": "Com responsabilidade",
+      "start": 104.88748299319728,
+      "voiceEnd": 129.03718820861678,
+      "end": 132.03718820861678
+    },
+    {
+      "id": "w09",
+      "text": "E o mais importante: você não precisa parar de pensar, alcançar uma sensação especial ou fazer tudo perfeitamente.",
+      "pause": 3,
+      "stage": "Sem cobranças",
+      "start": 132.03718820861678,
+      "voiceEnd": 144.75578231292516,
+      "end": 147.75578231292516
+    },
+    {
+      "id": "w10",
+      "text": "Basta experimentar. Este é o seu momento. Vamos começar?",
+      "pause": 3,
+      "stage": "No seu tempo",
+      "start": 147.75578231292516,
+      "voiceEnd": 157.14213151927436,
+      "end": 160.14213151927436
+    }
+  ],
+  "url": "/media/welcome.wav",
+  "voice": "Microsoft Maria Desktop — voz sintética pt-BR gravada"
+}

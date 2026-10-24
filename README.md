@@ -127,3 +127,7 @@ Consulte [o registro dos testes e limites](docs/12-verificacao.md). Inclui teste
 Consulte [o plano de implantação e privacidade](docs/13-implantacao-e-privacidade.md) e [a especificação das mídias finais](docs/midias-e-direitos.md).
 
 Pendências de produção: voz humana profissional e validação de uso das vozes/mídias; eventual vídeo real; configuração SMTP; domínio e HTTPS; controlador e canal de privacidade; bases legais e fornecedores; política de retenção e backups; teste em Android e iPhone reais. Nada foi publicado, contratado ou enviado externamente.
+
+## Continuação diária no Codex
+
+Há uma automação diária neste chat às 9h (Brasília) para concluir e melhorar os áudios, salvar as versões em SQLite e atualizar a prévia após validação. Consulte [as instruções](docs/automacao-diaria.md). A credencial e os bancos permanecem fora do GitHub. Os áudios distribuídos no projeto são MP3 otimizados; masters WAV são locais.

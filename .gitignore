@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.env
+.data/
+*.log
+work/
+
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.dpapi
+secrets/
+
+# Masters WAV ficam locais; MP3 otimizados acompanham o projeto.
+public/media/*.wav
+public/media/gemini-v1/*.wav
